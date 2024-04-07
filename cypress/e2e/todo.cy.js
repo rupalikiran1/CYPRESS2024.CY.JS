@@ -1,6 +1,6 @@
 describe('example to-do app', () => {
     beforeEach(() => {
-    Cy.visit('https://example.cypress.io/todo')
+    cy.visit('https://example.cypress.io/todo')
     })
     it('displays two todo items by default', () =>{
         cy.get('.todo-list li').should('have.length',2)
@@ -26,26 +26,26 @@ describe('example to-do app', () => {
         
     })
     context('with a checked task',() => {
-        beforeEach(() => {
+    beforeEach(() => {
         cy.contains('pay electric bill')
           .parent()
           .find('input[type=checkbox]')
           .check()  
         })
-        it('can filter for uncompleted tasks', () => {
-            cy.contains('Active').click()
-            cy.get('.todo-list li')
-             .should('have.length',1)
-             .first()
-             .should('have.text','walk the dog')
+    it('can filter for uncompleted tasks', () => {
+        cy.contains('Active').click()
+        cy.get('.todo-list li')
+         .should('have.length',1)
+         .first()
+         .should('have.text','walk the dog')
         })
-        it('can filter for completed tasks', () => {
-         cy.contains('completed').click()
+    it('can filter for completed tasks', () => {
+        cy.contains('completed').click()
          
-         cy.get('.todo-list li')
-           .should('have.length',1)
-           .first()
-           .should('have.text','pay electric bill')
+        cy.get('.todo-list li')
+          .should('have.length',1)
+          .first()
+          .should('have.text','pay electric bill')
 
         cy.contains('walk the dog').should('not.exist')
 
