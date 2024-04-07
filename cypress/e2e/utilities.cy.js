@@ -54,7 +54,7 @@ it('cypress.minimatch - test out glob patterns against string', () => {
       })
       expect(matching,'comments').to.be.true
       
-      matching = cypress.minimatch('/foo/bar/baz/123/quux?a=b&c=2','/foo/**',{
+       matching = cypress.minimatch('/foo/bar/baz/123/quux?a=b&c=2','/foo/**',{
         matchBase: false,
       })
       expect(matching,'comments').to.be.false 
