@@ -20,10 +20,35 @@ describe('verify the radio button',function(){
             cy.wrap(el).should('be.checked')
         })
     })
-    it.only('verify the functionality of check box',function(){
+    it('verify the functionality of check box with check',function(){
         cy.get('input[type="checkbox"]').each(function (el){
             cy.wrap(el).check().should('be.checked')
             cy.wrap(el).uncheck().should('not.be.checked')
         })
     })
+    it('verify the functionality of check box with loop',function(){
+        cy.get('input[type="checkbox"]').each(function (el){
+            cy.wrap(el).check().should('be.checked')
+            cy.wrap(el).uncheck().should('not.be.checked') 
+        })
+    })
+    it('verify the functionality of check box with click',function(){
+        cy.get('input[type="checkbox"]').each(function (el,index){
+            if(index != 2){
+                cy.wrap(el).click()
+            }
+        })
+    })
+    it('verify the functionality of check box - multiple',function(){
+        cy.get('input[type="checkbox"]').check(['option-1','option-2','option-3','option-4'])
+})
+it('selecting the dropdown - one',function(){
+    cy.get('#dropdown-menu-1').select('python')
+})
+it.only('selecting the dropdown - one',function(){
+    let selection = ["java","maven","css"]
+    cy.get('.section-title').first().find('select').each(function(el,index){
+        cy.wrap(el).select(selection[index])
+    })
+})
 })
