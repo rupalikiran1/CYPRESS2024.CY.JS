@@ -51,4 +51,9 @@ it.only('selecting the dropdown - one',function(){
         cy.wrap(el).select(selection[index])
     })
 })
+it.only('verify the disable enabled,and selected ratio button',function(){
+    cy.get('input[value = "cabbage"]').should('be.disabled')
+    cy.get('input[value = "lettuce"]').should('not.be.disabled')
+    cy.get('input[value = "pumpkin"]').should('be.checked')
+})
 })
