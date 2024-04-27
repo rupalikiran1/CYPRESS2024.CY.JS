@@ -24,10 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+const cypress = require("cypress")
+
 Cypress.Commands.add('formDetails',(fn,ln,em,msg) =>{
     cy.get('input[name="first_name"]').type(fn)
     cy.get('input[name="last_name"]').type(ln)
     cy.get('input[name="email"]').type(em)
     cy.get('textarea[name="message"]').type(msg)
     
+})
+
+cypress.Commands.add('getIframeBody',(id)=>{
+    return cy.get('#${id}')
+    .its('O.contentDocument.body').should('not.be.empty').then(cy.wrap)
 })
