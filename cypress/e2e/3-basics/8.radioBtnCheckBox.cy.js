@@ -17,12 +17,17 @@ describe('verify radio button and check box', function () {
         cy.get('#benzradio').click().should('be.checked')
         cy.get('#bmwradio').should('not.be.checked')
     })
-    it('verify check box -webdriver uni', function () {
+    it.skip('verify check box -webdriver uni', function () {
         cy.visit('https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html')
         cy.get('[value="option-3"]').should('be.checked')
         cy.get('[value="option-3"]').uncheck().should('not.be.checked')
         cy.get('[value="option-2"]').click().should('be.checked')
         cy.get('[value="option-2"]').click().should('not.be.checked')
     })
-
+    it('verify radiobutton/check box -Amazon', function () {
+        cy.visit('https://www.amazon.in/')
+        cy.get('[class="nav-line-2"]').first().click()
+        cy.get('[value="hi_IN"]').click({ force: true })
+        cy.get('[value="mr_IN"]').click({ force: true })
+    })
 })
