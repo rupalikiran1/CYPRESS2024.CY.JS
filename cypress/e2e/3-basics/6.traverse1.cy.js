@@ -54,9 +54,16 @@ describe('verify DOM element using various functions', function () {
         cy.get('#form-textfield').find('[name="firstname"]').type('rupali')
         cy.get('#form-textfield').find('[name="lastname"]').type('kotkar')
     })
-    it.only('to get DOM element within element using .closest()', function () {
+    it('to get DOM element within element using .closest()', function () {
         cy.get('[name="firstname"]').closest('.thumbnail').should('have.attr', 'id', 'thumbnail-1')
         cy.get('.navbar-toggle').closest('.navbar').should('have.attr', 'role', 'navigation')
+    })
+    it.only('to get DOM element within element using .closest()',function(){
+        cy.get('#fruits').parents()
+        cy.get('#fruits').parents().should('have.length',6)
+        cy.get('#fruits').parents().should('match','body')
+        cy.get('#fruits').parents().should('match','[class="container"]')
+        cy.get('#fruits').parents().should('match','[class="col-sm-12"]')
     })
 })
 
